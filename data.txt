@@ -1,12 +1,12 @@
 [
     {
         "id": 1,
-        "name": "Manoj Kumar",
+        "name": "Manoj Kumar Thakur",
         "email": "manojthakurkkr@gmail.com"
     },
     {
         "id": 2,
-        "name": "Tushar",
-        "email": "tushar@gmail.com"
+        "name": "Rajima",
+        "email": "Rajima@gmail.com"
     }
 ]
