@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template, request  
 import json
 
 app = Flask(__name__)
@@ -7,7 +7,7 @@ DATA_FILE = "data.txt"
 
 @app.route('/')
 def home():
-    return "Welcome to new kingdom"
+    return render_template('todo.html')
 
 @app.route('/api')
 def api():
