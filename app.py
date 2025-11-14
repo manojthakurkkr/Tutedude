@@ -24,8 +24,8 @@ def home():
 
 @app.route('/submittodoitem',methods=['POST'])   
 def submit_todo_item():
-    name = request.json.get('itemName')
-    description = request.json.get('itemDescription')
+    name = request.form.get('itemName')
+    description = request.form.get('itemDescription')
     todo_item = {
         "itemName": name,
         "itemDescription": description
