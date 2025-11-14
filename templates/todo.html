@@ -91,6 +91,15 @@
       <h3>{% if status %} {{ status }} {% endif %}</h3>
       <h2>To Do</h2>
       <form action="/submittodoitem" method="Post">
+        Item ID
+        <label for="itemId">Item ID</label>
+        <input
+          type="text"
+          id="itemId"
+          name="itemId"
+          placeholder="Enter Item name"
+          required
+        />
         <label for="itemName">Item Name</label>
         <input
           type="text"
