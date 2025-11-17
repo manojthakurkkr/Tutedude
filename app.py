@@ -1,5 +1,17 @@
 from flask import Flask, jsonify, render_template, request  
 import json
+from dotenv import load_dotenv
+import pymongo
+from pymongo.errors import PyMongoError
+import os 
+
+
+load_dotenv() 
+
+MONGO_URL = os.getenv("MONGO_URL")
+client = pymongo.MongoClient(MONGO_URL)
+db = client.cluster0
+collection = db['todo']
 
 app = Flask(__name__)
 
@@ -8,6 +20,22 @@ DATA_FILE = "data.txt"
 @app.route('/')
 def home():
     return render_template('todo.html')
+
+
+@app.route('/submittodoitem',methods=['POST'])   
+def submit_todo_item():
+    name = request.form.get('itemName')
+    description = request.form.get('itemDescription')
+    todo_item = {
+        "itemName": name,
+        "itemDescription": description
+    }
+    inserted = collection.insert_one(todo_item)
+    if inserted.acknowledged: 
+        return "to do saved successfully!" 
+    else:
+        message = "something went wrong!" 
+    return redirect(url_for('home', status=message)) 
 
 @app.route('/api')
 def api():
